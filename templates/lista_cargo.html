@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cargos </title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+</head>
+<body>
+<table style="border: solid" class="table" >
+    <thead>
+        <tr>
+            <th>ID Cargo</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Empleado</th>
+            <th>Opcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if  Cargo  %}
+        {% for Cargo in object_list %}
+            <tr>
+                <td>{{ Cargo.id }}</td>
+                <td>{{ Cargo.nombre }}</td>
+                <td>{{ Cargo.descripcion }}</td>
+                <td>{{ Cargo.Empleado.nombre }} {{ Cargo.Empleado.apellido }}</td>
+                <td>
+                    <a href="/editar/{{ Cargo.id }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>
+                                      <a style="background: #bf2718" href="/eliminar/{{ Cargo.id }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay Registros </h1>
+        {% endif %}
+    </tbody>
+</table>
+<br>
+<br>
+        <a href="{% url 'cargo' %}" class="btn btn-primary">Añadir Nuevo Cargo</a>
+<br>
+<br>
+        <a href="{% url 'nuevo_inicio' %}" class="btn btn-primary">Regresar al inicio</a>
+
+</body>
+</html>

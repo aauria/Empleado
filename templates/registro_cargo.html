@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Cargos</title>
+    {% load static %}
+    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+</head>
+<body >
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label>Nombre Cargo:</label>
+                    <input class="form-control", type="text" name="nombre">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label>Descripción del Cargo:</label>
+                    <input class="form-control", type="text" name="descripcion">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label>Empleado asignado al Cargo:</label>
+                    <input class="form-control", type="text" name="Empleado">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>
