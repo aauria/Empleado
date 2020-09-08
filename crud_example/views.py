@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import EmpleadoForm,CargoForm
-from django.urls import reverse_lazy
 from .models import Empleado , Departamento, Cargo
-from django.views.generic import ListView,CreateView
+
 
 
 # Create your views here.
@@ -45,13 +44,40 @@ def eliminar(request, id):
     return redirect('listar')
 
 
-#VISTAS CREADAS CON CLASES
-class Cargo(ListView):
-    model = Cargo
-    template_name = 'lista_cargo.html'
+## FUNCIONES DEL CRUD TABLA CARGO
+#FUNCION CREAR
+def cargo_crear(request):
+    if request.method == "POST":
+        form = CargoForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('cargo')
+            except:
+                pass
+    else:
+        form = CargoForm()
+    return render(request, 'registro_cargo.html', {'form': form})
 
-class crear_cargo(CreateView):
-    model = Cargo
-    form = CargoForm
-    template_name = 'registro_cargo.html'
-    success_url = reverse_lazy('nuevo_inicio')
+#FUNCION LISTAR
+def listar_cargo(request):
+    cargo = Cargo.objects.all()
+    return render(request, "lista_cargo.html", {'Cargo':cargo})
+
+#FUNCION ELIMINAR
+def eliminar_cargo(request, id):
+    cargo = Cargo.objects.get(id=id)
+    cargo.delete()
+    return redirect('cargo')
+
+#FUNCION EDITAR
+def editar_cargo(request, id):
+    cargo = Cargo.objects.get(id=id)
+    if request.method == 'GET':
+        form = CargoForm(instance=cargo)
+    else:
+        form = CargoForm(request.POST, instance=cargo)
+        if form.is_valid():
+            form.save()
+            return redirect('cargo')
+    return render(request,'editar_cargo.html',{'form':form})

@@ -18,10 +18,10 @@ class CargoForm(forms.ModelForm):
         labels={
             'nombre':'Nombre del Cargo',
             'descripcion':'Breve resumen del cargo',
-            'Empleado':'Nombre del empleado'
+            'Empleado':'Empleado asignado al cargo',
         }
         widgets={
             'nombre': forms.TextInput(attrs={'class':'form-control'}),
             'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
-            'Empleado':forms.Select(attrs={'class': 'form-control'}),
+            'Empleado':forms.TextInput(attrs={'class':'form-group'}),
         }
