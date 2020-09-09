@@ -1,5 +1,5 @@
 from django import forms
-from .models import Empleado,Cargo
+from .models import Empleado,Cargo,Departamento
 
 
 class EmpleadoForm(forms.ModelForm):
@@ -23,5 +23,21 @@ class CargoForm(forms.ModelForm):
         widgets={
             'nombre': forms.TextInput(attrs={'class':'form-control'}),
             'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
-            'Empleado':forms.TextInput(attrs={'class':'form-group'}),
+            'Empleado':forms.Select(attrs={'class':'form-group'}),
+        }
+
+class DepartForm(forms.ModelForm):
+    class Meta:
+        model=Departamento
+        fields=[
+            'nombre',
+            'Empleado',
+        ]
+        labels={
+            'nombre':'Nombre del Cargo',
+            'Empleado':'Empleado asignado al Departamento',
+        }
+        widgets={
+            'nombre': forms.TextInput(attrs={'class':'form-control'}),
+            'Empleado':forms.Select(attrs={'class':'form-group'}),
         }

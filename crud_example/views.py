@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import EmpleadoForm,CargoForm
-from .models import Empleado , Departamento, Cargo
+from .forms import EmpleadoForm,CargoForm,DepartForm
+from .models import Empleado ,Departamento, Cargo
 
 
-
+#Vistas del CRUD EMPLEADO
 # Create your views here.
 def home(request, plantilla="inicio.html"):
     return render(request, plantilla);
@@ -81,3 +81,42 @@ def editar_cargo(request, id):
             form.save()
             return redirect('cargo')
     return render(request,'editar_cargo.html',{'form':form})
+
+#CRUD TABLA DEPARTAMENTO
+
+#FUNCION CREAR
+def crear_departamento(request):
+    if request.method == "POST":
+        form = DepartForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('listar_depart')
+            except:
+                pass
+    else:
+        form = CargoForm()
+    return render(request, 'registro_depart.html', {'form': form})
+
+#FUNCION LISTAR
+def listar_depart(request):
+    departamento = Departamento.objects.all()
+    return render(request, "lista_depart.html", {'Departamento':departamento})
+
+#FUNCION ELIMINAR
+def eliminar_depart(request, id):
+    departamento = Departamento.objects.get(id=id)
+    departamento.delete()
+    return redirect('listar_depart')
+
+#FUNCION EDITAR
+def editar_depart(request, id):
+    departamento = Departamento.objects.get(id=id)
+    if request.method == 'GET':
+        form = DepartForm(instance=departamento)
+    else:
+        form = DepartForm(request.POST, instance=departamento)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_depart')
+    return render(request,'editar_depart.html',{'form':form})

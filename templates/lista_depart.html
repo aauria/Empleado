@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Departamento </title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+</head>
+<body>
+<table style="border: solid" class="table" >
+    <thead>
+        <tr>
+            <th>ID Departamento</th>
+            <th>Nombre</th>
+            <th>Empleado</th>
+            <th>Opcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if  Departamento  %}
+        {% for Departamento in Departamento %}
+            <tr>
+                <td>{{ Departamento.id }}</td>
+                <td>{{ Departamento.nombre }}</td>
+                <td>{{ Departamento.Empleado.nombre }} {{ Departamento.Empleado.apellido }}</td>
+                <td>
+                    <a href="/editar_depart/{{ Departamento.id }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>
+                                      <a style="background: #bf2718" href="/eliminar_depart/{{ Departamento.id }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay Registros </h1>
+        {% endif %}
+    </tbody>
+</table>
+<br>
+<br>
+        <a href="{% url 'crear_depart' %}" class="btn btn-primary">Añadir Nuevo Cargo</a>
+<br>
+<br>
+        <a href="{% url 'nuevo_inicio' %}" class="btn btn-primary">Regresar al inicio</a>
+
+</body>
+</html>

@@ -32,18 +32,26 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'nuevo_inicio' %}" role="button" aria-haspopup="true" aria-expanded="false">ADMINISTRADOR</a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'nuevo_inicio' %}" role="button" aria-haspopup="true" aria-expanded="false">Administrador</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{% url 'inicio' %}">Crear de Empleado</a>
-                <a class="dropdown-item" href="{% url 'cargo' %}">Listar Cargos Existentes</a>
                 <a class="dropdown-item" href="{% url 'crear_cargo' %}">Crear Cargo</a>
+                <a class="dropdown-item" href="{% url 'crear_depart' %}">Crear Departamento</a>
+            </div>
+           </li>
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'nuevo_inicio' %}" role="button" aria-haspopup="true" aria-expanded="false">Listar</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'listar' %}">Listar Empleados</a>
+                <a class="dropdown-item" href="{% url 'cargo' %}">Listar Cargos</a>
+                <a class="dropdown-item" href="{% url 'listar_depart' %}">Listado Departamento</a>
             </div>
            </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'listar' %}">Lista Empleado</a>
+            <a class="nav-link" href="{% url 'registro_usuario' %}" >Registro Accesos </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'registro_usuario' %}" >Registro Usuario</a>
+            <a class="nav-link" href="{% url 'login' %}" >Salir Sistema </a>
           </li>
         </ul>
       </div>

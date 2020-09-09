@@ -22,7 +22,7 @@ from django.contrib.auth.urls import views as login
 
 
 urlpatterns = [
-    path('', login.LoginView.as_view(template_name='login_2.html')),
+    path('', login.LoginView.as_view(template_name='login_2.html'),name='login'),
     url('usuario', include('usuario.urls')),
     path('inicio',views.home,name='nuevo_inicio'),
     path('emp', views.emp,name="inicio"),
@@ -33,6 +33,10 @@ urlpatterns = [
     path('crear_cargo/',views.cargo_crear,name='crear_cargo'),
     path('eliminar_cargo/<int:id>', views.eliminar_cargo,name='eliminar_cargo'),
     path('editar_cargo/<int:id>', views.editar_cargo,name='editar_cargo'),
+    path('listar_depart',views.listar_depart,name='listar_depart'),
+    path('crear_depart/',views.crear_departamento,name='crear_depart'),
+    path('eliminar_depart/<int:id>', views.eliminar_depart,name='eliminar_depart'),
+    path('editar_depart/<int:id>', views.editar_depart,name='editar_depart'),
     path('admin/', admin.site.urls),
 
 ]
