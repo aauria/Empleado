@@ -13,7 +13,6 @@
             <th>ID Cargo</th>
             <th>Nombre</th>
             <th>Descripcion</th>
-            <th>Empleado</th>
             <th>Opcion</th>
         </tr>
     </thead>
@@ -24,7 +23,6 @@
                 <td>{{ Cargo.id }}</td>
                 <td>{{ Cargo.nombre }}</td>
                 <td>{{ Cargo.descripcion }}</td>
-                <td>{{ Cargo.Empleado.nombre }} {{ Cargo.Empleado.apellido }}</td>
                 <td>
                     <a href="/editar_cargo/{{ Cargo.id }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>
                                       <a style="background: #bf2718" href="/eliminar_cargo/{{ Cargo.id }}">Eliminar</a>

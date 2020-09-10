@@ -17,6 +17,8 @@
             <th>Dirección</th>
             <th>Correo</th>
             <th>Telefono</th>
+            <th>Cargo</th>
+            <th>Departamento</th>
             <th>Opcion</th>
         </tr>
     </thead>
@@ -30,6 +32,8 @@
                 <td>{{ Empleado.direccion }}</td>
                 <td>{{ Empleado.correo }}</td>
                 <td>{{ Empleado.telefono }}</td>
+                <td>{{ Empleado.Cargo.nombre }} {{ Empleado.Cargo.apellido }} </td>
+                <td>{{ Empleado.Departamento.nombre }}</td>
                 <td>
                     <a href="/editar/{{ Empleado.id }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>
                                       <a style="background: #bf2718" href="/eliminar/{{ Empleado.id }}">Eliminar</a>

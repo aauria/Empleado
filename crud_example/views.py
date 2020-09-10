@@ -19,7 +19,7 @@ def emp(request):
                 pass
     else:
         form = EmpleadoForm()
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'prueba_crear.html', {'form': form})
 
 
 def listar_empleado(request):

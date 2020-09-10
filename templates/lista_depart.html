@@ -12,7 +12,6 @@
         <tr>
             <th>ID Departamento</th>
             <th>Nombre</th>
-            <th>Empleado</th>
             <th>Opcion</th>
         </tr>
     </thead>
@@ -22,8 +21,7 @@
             <tr>
                 <td>{{ Departamento.id }}</td>
                 <td>{{ Departamento.nombre }}</td>
-                <td>{{ Departamento.Empleado.nombre }} {{ Departamento.Empleado.apellido }}</td>
-                <td>
+               <td>
                     <a href="/editar_depart/{{ Departamento.id }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>
                                       <a style="background: #bf2718" href="/eliminar_depart/{{ Departamento.id }}">Eliminar</a>
                 </td>
